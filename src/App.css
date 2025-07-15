@@ -1,0 +1,246 @@
+/* Reset y estilos base */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  overflow: auto; /* CAMBIO CLAVE */
+}
+
+/* Layout principal */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f8f9fa;
+}
+
+/* Barra de encabezado */
+.header-bar {
+  background: linear-gradient(135deg, #ff9500, #ff6b00);
+  color: white;
+  padding: 15px 25px;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  min-height: 60px;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* Contenido principal - Flex layout */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 15px;
+  padding: 15px;
+}
+
+/* Sección de tabla (30% ancho) */
+.gantt-table-container {
+  flex: 0 0 30%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 100%; /* importante */
+}
+
+.table-responsive {
+  overflow-y: auto;
+  flex: 1; /* para ocupar el alto disponible */
+}
+
+/* Tabla de Gantt */
+.gantt-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.gantt-table th {
+  background-color: #ff9500;
+  color: #000000; /* Texto negro */
+  padding: 12px 15px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+  font-weight: 600;
+}
+
+.gantt-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  color: #000000 !important; /* Fuerza texto negro */
+  transition: background-color 0.2s;
+}
+
+/* Filas con texto negro */
+.gantt-table tr {
+  color: #000000 !important;
+}
+
+/* Niveles de anidación */
+.row-level-0 td {
+  font-weight: 600;
+  background-color: #fff8f0;
+}
+
+.row-level-1 td:first-child {
+  padding-left: 30px;
+}
+
+.row-level-2 td:first-child {
+  padding-left: 50px;
+}
+
+/* Hover y efectos */
+.gantt-table tr:hover td {
+  background-color: #ffebd6;
+}
+
+/* Sección del diagrama (70% ancho) */
+.gantt-chart-container {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Cabecera de fechas */
+.gantt-header {
+  display: flex;
+  background: #ff9500;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.gantt-cell {
+  min-width: 63px;
+  text-align: center;
+  font-weight: 500;
+  color: #000000;
+  font-size: 0.95rem;
+  border-right: 1px solid #ffffff; /* ← Separación clara */
+}
+
+/* Área del gráfico */
+.gantt-chart {
+  flex: 1;
+  position: relative;
+  padding: 20px;
+  overflow: auto;
+  background-color: #fcfcfc;
+  min-height: 500px;
+}
+
+/* Barras del Gantt - Más grandes y visibles */
+.bar {
+  position: absolute;
+  height: 36px;
+  margin-bottom: 8px;
+  animation: slideIn 0.4s ease-out;
+  transition: all 0.2s;
+  min-width: 40px;
+}
+
+.bar-frame {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff9500, #ffad33);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: #000000; /* Texto negro */
+  font-weight: 500;
+  font-size: 0.7rem;
+  border-left: 4px solid #e67e22;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bar:hover {
+  z-index: 10;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+}
+
+/* Animaciones */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Botones e interactivos */
+.expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #000000 !important; /* Texto negro */
+  margin-right: 8px;
+  padding: 0 5px;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 8px;
+  color: #000000; /* Texto negro */
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Scrollbars personalizadas */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff9500;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e67e22;
+}
+
