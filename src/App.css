@@ -244,3 +244,47 @@ html, body, #root {
   background: #e67e22;
 }
 
+.titulo-invertido {
+  background-color: black;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.nav-link {
+  padding: 10px 16px;
+  margin-right: 12px;
+  background-color: #222; /* fondo oscuro */
+  color: #fff; /* texto blanco */
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #444; /* fondo al pasar el mouse */
+  color: #ffcc00; /* color llamativo */
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .gantt-table-container,
+  .gantt-chart-container {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gantt-table {
+    font-size: 14px;
+  }
+
+  .tabla-insumos-seleccionados {
+    overflow-x: auto;
+  }
+}
